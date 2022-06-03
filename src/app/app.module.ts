@@ -11,9 +11,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AreaComponentComponent } from './projectComponents/area-component/area-component.component';
+import { PakageComponentComponent } from './projectComponents/pakage-component/pakage-component.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import {MatCardModule} from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AreaComponentComponent,
+    PakageComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +35,25 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSidenavModule,
     MatIconModule,
     MatDividerModule,
+    NgbModule,
+    NgbModule,
+    MatCardModule,
+    FormsModule,  
+    ReactiveFormsModule,  
+    HttpClientModule,  
+    BrowserAnimationsModule,  
+    MatButtonModule,  
+    MatFormFieldModule,
+    MatInputModule,
+  
+    MatNativeDateModule,  
+    MatIconModule,  
+   
+    MatSidenavModule,  
+   
+    MatToolbarModule,  
+    MatToolbarModule,  
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

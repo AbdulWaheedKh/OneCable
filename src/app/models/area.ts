@@ -1,15 +1,13 @@
 
 
 export class area {    
-    Id: number;
-    Name: String;  
-    Description: String;
-    IsActive: boolean; 
-    Deleted: boolean; 
-    Created: Date;
-    Modified: Date;
-
-    
+    id: number;
+    name: String;  
+    description: String;
+    isActive: boolean; 
+    deleted: boolean; 
+    created: Date;
+    modified: Date;
     
     /**
      * Constructor
@@ -18,13 +16,13 @@ export class area {
      */
     constructor(obj=null) {
         
-        this.Id = (obj==null)?null:obj.Id; 
-        this.Name = (obj==null)? '':obj.Name;
-        this.Description =  (obj==null)?'':obj.Description;
-        this.IsActive = (obj==null)?0:obj.IsActive;
-        this.Created =  (obj==null)?'':obj.Created ;
-        this.Modified =  (obj==null)?'':obj.ModifiedDate ;
-        this.Deleted = (obj==null)?0:obj.Deleted;
+        this.id = (obj==null)?null:obj.id; 
+        this.name = (obj==null)? '':obj.name;
+        this.description =  (obj==null)?'':obj.description;
+        this.isActive = (obj==null)?0:obj.isActive;
+        this.created =  (obj==null)?'':obj.created ;
+        this.modified =  (obj==null)?'':obj.modifiedDate ;
+        this.deleted = (obj==null)?0:obj.deleted;
     }
    
     

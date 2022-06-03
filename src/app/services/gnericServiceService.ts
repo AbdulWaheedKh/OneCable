@@ -15,50 +15,89 @@ export class gnericServiceService {
 
    httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      //'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 
-      // 'Content-Type': 'application/json',
-      //           'Access-Control-Allow-Origin': '*',
-      //           'Access-Control-Allow-Credentials': 'true',
-      //           'Access-Control-Allow-Headers': 'Content-Type',
-      //           'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-      //           'key': 'x-api-key',
-      //           'value': 'NNctr6Tjrw9794gFXf3fi6zWBZ78j6Gv3UCb3y0x'
+      'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+                'key': 'x-api-key',
+                'value': 'NNctr6Tjrw9794gFXf3fi6zWBZ78j6Gv3UCb3y0x'
 
-      // 'Content-Type':  'application/json'
+    //  'Content-Type':  'application/json'
 
     })
   };
 
-  getEmployees(): Observable<area[]>{
-    return this.http.get<area[]>(appConstants.URL_BASE+'/getAll')
+  getAllAreas(): Observable<area[]>{
+    return this.http.get<area[]>(appConstants.AREA_RESOURCE+'getAllAreas')
   }
 
-  //configUrl = 'http://localhost:8081/waheed';
- // configUrl1 = 'http://localhost:8080/DelEmpById';
+  delAreaById(id:number ): Observable<area>{
+     return this.http.delete<area>(appConstants.AREA_RESOURCE +'/'+ id)
+   }
 
-//   getEmployees(): Observable<EmployeesModel[]>{
-//     return this.http.get<EmployeesModel[]>(appConstants.URL_BASE+'/getAll')
-//   }
 
-//   getEmployeeById(  id : Number ): Observable<EmployeesModel>{
-//     return this.http.get<EmployeesModel>(AppConstants.URL_BASE+'/'+ id)
-//   }
 
-//   delEmployeeById(id:number ): Observable<EmployeesModel>{
-//     return this.http.delete<EmployeesModel>(AppConstants.URL_BASE+'/'+ id)
-//   }
+   deleteareaById(areaid: number): Observable<number> {  
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
+    return this.http.delete<number>(appConstants.AREA_RESOURCE  + areaid,  
+ httpOptions);  
+  }  
 
-//   getCurrentEmployeeById(id:any){
-//     return this.http.get(`${AppConstants.URL_BASE+'/getEmpById'}/${id}`)
-//   }
-
-  // updateCurrentEmployeeById(id:any,data:EmployeesModel){
+   getAllarea(): Observable<area[]> {  
+    return this.http.get<area[]>(appConstants.URL_BASE + '/AllareaDetails');  
+  }  
+  getareaById(areaId: number): Observable<area> {  
+    return this.http.get<area>(appConstants.AREA_RESOURCE + 'getAreaById/' + areaId);  
+  }  
+  createarea(area: area): Observable<area> {  
+    const httpOptionss = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };   
+    return this.http.post<area>(appConstants.AREA_RESOURCE+ 'createNewArea',  
+    area, this.httpOptions);  
+  }  
+  updatearea(Area:area): Observable<area> {  
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
+    return this.http.put<area>(appConstants.AREA_RESOURCE + 'editArea/' , Area ,this.httpOptions
+    );  
+  }  
+ // updateCurrentareaById(id:any,data:areasModel){
   //   return this.http.put(`${this.configUrl+'/editEmp'}/${id}`,data,this.httpOptions)
   // }
 
 
-//   updateCurrentEmployeeById(standardSubject: EmployeesModel): Promise<any> {
+
+
+
+
+
+
+
+
+  //configUrl = 'http://localhost:8081/waheed';
+ // configUrl1 = 'http://localhost:8080/DelEmpById';
+
+//   getareas(): Observable<areasModel[]>{
+//     return this.http.get<areasModel[]>(appConstants.URL_BASE+'/getAll')
+//   }
+
+//   getareaById(  id : Number ): Observable<areasModel>{
+//     return this.http.get<areasModel>(AppConstants.URL_BASE+'/'+ id)
+//   }
+
+
+
+//   getCurrentareaById(id:any){
+//     return this.http.get(`${AppConstants.URL_BASE+'/getEmpById'}/${id}`)
+//   }
+
+  // updateCurrentareaById(id:any,data:areasModel){
+  //   return this.http.put(`${this.configUrl+'/editEmp'}/${id}`,data,this.httpOptions)
+  // }
+
+
+//   updateCurrentareaById(standardSubject: areasModel): Promise<any> {
 //     return new Promise((resolve, reject) => {
 
 //       console.log("sevice called");

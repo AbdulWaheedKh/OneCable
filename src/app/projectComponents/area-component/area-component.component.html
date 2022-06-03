@@ -1,0 +1,131 @@
+
+<button type="button" class="btn btn-info" >Info</button>
+
+<div class="container">  
+  
+    <mat-card>  
+      <mat-toolbar color="accent">  
+        <div align="center" style="color:white;text-align: right;">  
+          CRUD operation in Angular 7 using Web api and Sql Database  
+        </div>    
+      </mat-toolbar>  
+    <br><br>  
+      <mat-card-content>  
+        <form [formGroup]="areaForm"(ngSubmit)="onFormSubmit()">  
+            <!-- <form [formGroup]="areaForm"(ngSubmit)="onFormSubmit(areaForm.value)">  -->
+                <table>  
+                  <tr>  
+                    <td class="tbl1">  
+                      <mat-form-field class="demo-full-width">  
+                        <input formControlName="name" matTooltip="Enter Employee Name" matInput placeholder="Area Name">  
+                      </mat-form-field>  
+                      <!-- <mat-error>  
+                        <span *ngIf="!areaForm.get('Name').value && areaForm.get('Name').touched"></span>  
+                      </mat-error>   -->
+                    </td>  
+                    <!-- <td class="tbl1">  
+                      <mat-form-field class="demo-full-width">  
+                        <input matInput [matDatepicker]="picker"matTooltip="Enter Date Of Birth" formControlName="DateOfBirth"placeholder="Choose Date Of Birth">  
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>  
+                        <mat-datepicker #picker></mat-datepicker>  
+                      </mat-form-field>  
+                      <mat-error>  
+                        <span *ngIf="!areaForm.get('DateOfBirth').value && areaForm.get('DateOfBirth').touched"></span>  
+                      </mat-error>  
+                    </td>   -->
+                    <td class="tbl1">  
+                      <mat-form-field class="demo-full-width">  
+                        <input formControlName="description" matTooltip="Enter Description" matInput placeholder="description">  
+                      </mat-form-field>  
+                      <!-- <mat-error>  
+                        <span *ngIf="!areaForm.get('Description').value && areaForm.get('Description').touched"></span>  
+                      </mat-error>   -->
+                    </td>  
+                  </tr>  
+                  <tr>  
+                    <!-- <td class="tbl1">  
+                      <span>Gender</span>  
+                      <br><br>  
+                      <mat-radio-group matTooltip="Enter Gender"formControlName="Gender">  
+                          <mat-radio-button value="0">Male</mat-radio-button>    
+                          <mat-radio-button value="1">Female</mat-radio-button>  
+                        </mat-radio-group>  
+                      <mat-error>  
+                        <span *ngIf="!areaForm.get('Gender').value && areaForm.get('Gender').touched"></span>  
+                      </mat-error>  
+                    </td>   -->
+                    <td class="tbl1">  
+                      <mat-form-field class="demo-full-width">  
+                        <input matTooltip="Enter IsActive"formControlName="isActive" matInput placeholder="isActive">  
+                      </mat-form-field>  
+                      <!-- <mat-error>  
+                        <span *ngIf="!areaForm.get('IsActive').value && areaForm.get('IsActive').touched"></span>  
+                      </mat-error>   -->
+                    </td>  
+                    <td class="tbl1">  
+                      <!-- <mat-form-field class="demo-full-width">  
+                        <input formControlName="Created" matTooltip="Created" matInput placeholder="Created">  
+                      </mat-form-field>   -->
+                      <!-- <mat-error>  
+                        <span *ngIf="!areaForm.get('Created').value && areaForm.get('Created').touched"></span>  
+                      </mat-error>   -->
+                    </td>  
+
+                    <td class="tbl1">  
+                      <!-- <mat-form-field class="demo-full-width">  
+                        <input formControlName="Modified" matTooltip="Modified" matInput placeholder="Modified">  
+                      </mat-form-field>   -->
+                      <!-- <mat-error>  
+                        <span *ngIf="!areaForm.get('Modified').value && areaForm.get('Modified').touched"></span>  
+                      </mat-error>   -->
+                    </td>  
+
+                  </tr>  
+                  <tr>  
+                    <td></td>  
+                    <td  class="content-center">  
+                      <button type="submit" mat-raised-button color="accent"matTooltip="Click Submit Button" >Submit</button>
+                      <!-- <button type="submit" mat-raised-button color="accent"matTooltip="Click Submit Button"[disabled]="!areaForm.valid">Submit</button>       -->
+                      <button type="reset" mat-raised-button color="accent"matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>  
+                    </td>  
+                    <td>  
+                      <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">  
+                        {{massage}}  
+                      </p>  
+                    </td>  
+                  </tr>  
+                </table>  
+    <br><br>  
+          <table class="table" >  
+              <tr ngclass="btn-primary">  
+                <th class="tbl2">Area Name</th>  
+                <!-- <th class="tbl2">Date Of Birth</th>   -->
+                <th class="tbl2">Description</th>  
+                <th class="tbl2">IsActive</th>  
+                <th class="tbl2">Created</th>  
+                <th class="tbl2">Modified</th>  
+                <th class="tbl2">Edit</th>  
+                <th class="tbl2">Delete</th>  
+              </tr>  
+              <tr *ngFor="let employee of allAreas | async">  
+                <td class="tbl2">{{employee.name}}</td>  
+                <td class="tbl2">{{employee.description}}</td>  
+                <td class="tbl2">{{employee.isActive}}</td>
+                <td class="tbl2">{{employee.created | date}}</td>  
+                <td class="tbl2">{{employee.modified | date}}</td>    
+                <!-- <td class="tbl2">{{employee.Gender ==0? 'Male' : 'Female'}}</td>   -->
+                <!-- <td class="tbl2">{{employee.Address}}</td>  
+                <td class="tbl2">{{employee.PinCode}}</td>   -->
+                <td class="tbl2">  
+                  <button type="button" class="btn btn-info"matTooltip="Click Edit Button"(click)="loadEmployeeToEdit(employee.id)">Edit</button>  
+                </td>  
+                <td class="tbl2">  
+                  <button type="button" class="btn btn-danger"matTooltip="Click Delete Button"(click)="deleteEmployee(employee.id)">Delete</button>  
+                </td>  
+              </tr>  
+      
+            </table>  
+        </form>  
+      </mat-card-content>  
+    </mat-card>  
+    </div>  
